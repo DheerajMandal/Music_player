@@ -4,30 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/parent"
+    android:background="@drawable/background"
     tools:context="patia.silicon.com.music_player.MainActivity">
 
-   <Button
-       android:id="@+id/b1"
-       android:text="Mriganshu"
+
+
+
+<LinearLayout
+    android:layout_marginTop="444dp"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#000000"
+    android:layout_height="match_parent">
+   <SeekBar
+       android:background="#3f8f8282"
+       android:id="@+id/seekbar"
        android:layout_width="match_parent"
-       android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/b2"
-        android:layout_below="@+id/b1"
-        android:text="Dheeraj"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/b3"
-        android:layout_below="@id/b2"
-        android:text="Bhavesh"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/b4"
-        android:layout_below="@id/b3"
-        android:text="Mriganshu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+       android:layout_height="wrap_content"
+       />
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       >
+    <ImageButton
+
+        android:background="@drawable/play"
+        android:layout_width="44dp"
+        android:id="@+id/play"
+        android:onClick="button"
+
+        android:layout_height="44dp"
+        android:layout_marginLeft="178dp"/>
+
+       <ImageButton
+           android:onClick="button"
+           android:layout_width="44dp"
+           android:id="@+id/forward"
+           android:layout_marginTop="6.7dp"
+           android:layout_marginLeft="220dp"
+           android:background="@drawable/next_play_hollow"
+           android:layout_height="33dp" />
+<ImageButton
+    android:id="@+id/backward"
+    android:onClick="button"
+    android:layout_width="44dp"
+    android:background="@drawable/back_play"
+    android:layout_marginTop="6.7dp"
+    android:layout_marginLeft="133dp"
+    android:layout_height="33dp" />
+
+   </RelativeLayout>
+</LinearLayout>
+
+
+
+
 
 </RelativeLayout>
