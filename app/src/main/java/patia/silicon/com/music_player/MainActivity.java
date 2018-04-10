@@ -4,8 +4,10 @@ import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
@@ -14,9 +16,10 @@ public class MainActivity extends AppCompatActivity {
     MediaPlayer mediaPlayer;
     ImageButton play,forward,backward;
     SeekBar seekBar;
+    //Runnable is used to perform a task one-time or repeated execution of time.
     Runnable runnable;
     Handler handler;
-
+LinearLayout linearLayout;
 
     @Override
     public void onBackPressed() {
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        linearLayout=(LinearLayout)findViewById(R.id.inflator_linear_layout);
         mediaPlayer=MediaPlayer.create(MainActivity.this,R.raw.music);
         seekBar=(SeekBar)findViewById(R.id.seekbar);
         play=(ImageButton)findViewById(R.id.play);
@@ -69,7 +73,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void changeseekbar() {
+    private void changeseekbar()
+    {
+
         seekBar.setProgress(mediaPlayer.getCurrentPosition());
         if (mediaPlayer.isPlaying())
         {
@@ -111,6 +117,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Toast.makeText(this, "yes it works", Toast.LENGTH_SHORT).show();
+
+    }
+
+    public void arrow_button(View view) {
+        LayoutInflater inflater=getLayoutInflater();
+        View view1=View.inflate(MainActivity.this,R.layout.music_front_page,null);
+        linearLayout.addView(view1);
 
     }
 }
