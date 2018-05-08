@@ -1,41 +1,52 @@
 package patia.silicon.com.music_player;
 
 import android.content.Intent;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import java.io.*;
 
 import java.io.File;
-
-public class starup_screen extends AppCompatActivity {
-
+import java.util.ArrayList;
+class startup_screen extends AppCompatActivity {
+    ArrayList<File> files;
+    ArrayList<String>   mp3files;
+    ArrayList<String>   files2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.MainActivity);
+        setContentView(R.layout.activity_main);
 
     }
-    public void listFilesForFolder(final File folder) {
-        File folder = new File("Environment.getExternalStorageState()");
-        File[] listOfFiles = folder.listFiles();
-        starup_screen ob  = new starup_screen();
-        String mp3[] = new String[];
-        int temp,c=0;
-        for (File file : listOfFiles) {
+    public ArrayList<String> Process_starter()
+    {
+        listf(Environment.getExternalStorageState());
+        return(mp3files);
+    }
+    public void listf(String directoryName) {
+        File directory = new File(directoryName);
+
+        // get all the files from a directory
+        File[] fList = directory.listFiles();
+        for (File file : fList) {
             if (file.isFile()) {
-                {
-                   temp=  ob.mp3(file.getName());
-                   if(temp==1)
-                       mp3[c++]=file.getName();
-                }
+                files.add(file);
+            } else if (file.isDirectory()) {
+                listf(file.getAbsolutePath());
             }
         }
+        for(File temp:files)
+            files2.add(temp.getName());
+        music_list_creater();
+
     }
-    public int mp3(String n)
+    public void music_list_creater()
     {
-        if(n.charAt(n.length()-1)=='3'&&n.charAt(n.length()-2)=='p'&&n.charAt(n.length()-3)=='m')
-            return(1);
-        else
-            return(0);
+        for(String t:files2)
+        {
+            if((t.substring(t.length()-3,t.length()-1)).equals("mp3"))
+                mp3files.add(t);
+        }
     }
 }

@@ -11,7 +11,6 @@
     <LinearLayout
         android:id="@+id/inflator_linear_layout"
         android:orientation="vertical"
-
         android:layout_width="match_parent"
         android:layout_height="444dp">
 
